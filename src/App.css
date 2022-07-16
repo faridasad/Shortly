@@ -1,0 +1,21 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.button.secondary {
+  background-color: transparent;
+}
+.button.primary {
+  background-color: hsl(180, 66%, 49%);
+  color: #fff;
+}
+.button {
+  border: none;
+  padding: 0.5em 1.25em;
+  border-radius: 15px;
+  cursor: pointer;
+}
