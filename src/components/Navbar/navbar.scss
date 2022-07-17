@@ -29,6 +29,10 @@
       a {
         color: hsl(0, 0%, 75%);
         text-decoration: none;
+        transition: 0.3s ease color;
+      }
+      a:hover {
+        color: #000;
       }
     }
   }
@@ -54,6 +58,7 @@
     opacity: 0.5;
     background-color: #fff;
     margin: 1rem 0;
+    display: none;
   }
 }
 
@@ -64,6 +69,10 @@
     background-color: hsl(257, 27%, 26%);
     padding: 1.5rem;
     margin-top: 25px;
+    transition: 300ms all;
+  }
+  .navbar nav .border {
+    display: block;
   }
 
   nav[data-status="open"] {

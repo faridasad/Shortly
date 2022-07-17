@@ -1,16 +1,16 @@
-import React from 'react'
-import "./footer.scss"
+import React from "react";
+import "./footer.scss";
 import logoSvg from "../../assets/images/logo.svg";
-import iconFacebook from "../../assets/images/icon-facebook.svg"
-import iconInstagram from "../../assets/images/icon-instagram.svg"
-import iconPinterest from "../../assets/images/icon-pinterest.svg"
-import iconTwitter from "../../assets/images/icon-twitter.svg"
+import iconFacebook from "../../assets/images/icon-facebook.svg";
+import iconInstagram from "../../assets/images/icon-instagram.svg";
+import iconPinterest from "../../assets/images/icon-pinterest.svg";
+import iconTwitter from "../../assets/images/icon-twitter.svg";
 
 const Footer = () => {
   return (
     <section className="footer">
-        <img src={logoSvg} alt="logo" />
-        <div className="footer-nav">
+      <img src={logoSvg} alt="logo" />
+      <div className="footer-nav">
         <ul className="f-features" aria-label="features">
           <p>Features</p>
           <li>Link Shortening</li>
@@ -31,14 +31,22 @@ const Footer = () => {
           <li>Contact</li>
         </ul>
         <ul className="f-socials" aria-label="socials">
-          <li><img src={iconFacebook} alt="facebook" /></li>
-          <li><img src={iconTwitter} alt="twitter" /></li>
-          <li><img src={iconPinterest} alt="pinterest" /></li>
-          <li><img src={iconInstagram} alt="instagram" /></li>
+          <li>
+            <img src={iconFacebook} alt="facebook" />
+          </li>
+          <li>
+            <img src={iconTwitter} alt="twitter" />
+          </li>
+          <li>
+            <img src={iconPinterest} alt="pinterest" />
+          </li>
+          <li>
+            <img src={iconInstagram} alt="instagram" />
+          </li>
         </ul>
-        </div>
-      </section>
-  )
-}
+      </div>
+    </section>
+  );
+};
 
-export default Footer
+export default Footer;

@@ -1,14 +1,40 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import introBg from "../../assets/images/illustration-working.svg";
 import listIcon1 from "../../assets/images/icon-brand-recognition.svg";
 import listIcon2 from "../../assets/images/icon-detailed-records.svg";
 import listIcon3 from "../../assets/images/icon-fully-customizable.svg";
-
 import "./home.scss";
 import Footer from "../../components/Footer/Footer";
 
 const Home = () => {
+  const [inputValue, setInputValue] = useState("");
+  const [links, setLinks] = useState([]);
+  const [copiedId, setCopiedId] = useState("");
+  const [errorText, setErrorText] = useState("");
+
+  const handleShorten = async () => {
+    try {
+      const req = await fetch(
+        `https://api.shrtco.de/v2/shorten?url=${inputValue}`
+      );
+      const res = await req.json();
+      if (res.ok) {
+        setLinks((prevLinks) => [
+          { id: res.result.code, inputValue, shortLink: res.result.short_link },
+          ...prevLinks,
+        ]);
+        setInputValue("");
+        setErrorText("");
+      } else {
+        setErrorText(res.error);
+        !inputValue && setErrorText("Please add a link");
+      }
+    } catch (error) {
+      setErrorText(error);
+    }
+  };
+
   return (
     <>
       <Navbar />
@@ -30,9 +56,42 @@ const Home = () => {
 
       <section className="stats">
         <div className="input-container">
-          <input type="text" placeholder="Shorten a link here..." />
-          <button className="button primary shorten">Shorten it!</button>
+          <input
+            className={errorText && "invalid"}
+            value={inputValue}
+            type="text"
+            placeholder="Shorten a link here..."
+            tabIndex="0"
+            onChange={(e) => setInputValue(e.target.value)}
+            onKeyDown={(e) => e.key === "Enter" && handleShorten()}
+          />
+          {errorText && <span className="error-text"> {errorText} </span>}
+          <button className="button primary shorten" onClick={handleShorten}>
+            Shorten it!
+          </button>
         </div>
+        {links.map((link, index) => {
+          return (
+            <div className="link-container" key={index}>
+              <p className="domain-text">{link.inputValue}</p>
+              <div className="border"></div>
+              <p className="short-link">{link.shortLink}</p>
+              <button
+                className={
+                  copiedId === link.id
+                    ? "button primary copied"
+                    : "button primary copy"
+                }
+                onClick={() => {
+                  setCopiedId(link.id);
+                  navigator.clipboard.writeText(link.shortLink);
+                }}
+              >
+                {copiedId === link.id ? "Copied!" : "Copy"}
+              </button>
+            </div>
+          );
+        })}
         <div className="stats-wrapper">
           <div>
             <h1 className="stats-header">Advanced Statistics</h1>

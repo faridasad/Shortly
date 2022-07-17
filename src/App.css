@@ -18,4 +18,18 @@
   padding: 0.5em 1.25em;
   border-radius: 15px;
   cursor: pointer;
+  transition: 0.3s ease all;
+}
+
+.button.copied {
+  border-radius: 4px;
+  background-color: hsl(257, 27%, 26%);
+}
+.button.copy {
+  border-radius: 4px;
+}
+
+.button:hover {
+  opacity: 0.9;
+  filter: brightness(170%);
 }
