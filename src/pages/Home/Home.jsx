@@ -75,7 +75,7 @@ const Home = () => {
             <div className="link-container" key={index}>
               <p className="domain-text">{link.inputValue}</p>
               <div className="border"></div>
-              <p className="short-link">{link.shortLink}</p>
+              <a className="short-link" target="_blank" href={`https://www.${link.shortLink}`}>{link.shortLink}</a>
               <button
                 className={
                   copiedId === link.id
