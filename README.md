@@ -1,4 +1,4 @@
-# Shortly-url-shortening-website
+# Shortly-url-shortening
 
 ## About The Project
 
