@@ -1,4 +1,4 @@
-# Shortly-url-shortening
+# Shortly
 
 ## About The Project
 
